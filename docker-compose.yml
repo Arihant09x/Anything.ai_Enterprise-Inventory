@@ -5,9 +5,9 @@ services:
     image: postgres:15-alpine
     container_name: inventory_db
     environment:
-      POSTGRES_USER: ${POSTGRES_USER:-admin}
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-password123}
-      POSTGRES_DB: ${POSTGRES_DB:-inventory_db}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
     ports:
       - "5432:5432"
     volumes:
@@ -22,11 +22,11 @@ services:
       - PORT=5000
       # Default usage points to the internal postgres container. 
       # If you define DATABASE_URL in GitHub Secrets (e.g. for NeonDB), it will override this.
-      - DATABASE_URL=${DATABASE_URL:-postgres://${POSTGRES_USER:-admin}:${POSTGRES_PASSWORD:-password123}@postgres:5432/${POSTGRES_DB:-inventory_db}}
-      - JWT_SECRET=${JWT_SECRET:-supersecretkey123}
-      - ADMIN_SECRET_KEY=${ADMIN_SECRET_KEY:-admin123}
+      - DATABASE_URL=${DATABASE_URL}
+      - JWT_SECRET=${JWT_SECRET}
+      - ADMIN_SECRET_KEY=${ADMIN_SECRET_KEY}
       - NEW_RELIC_LICENSE_KEY=${NEW_RELIC_LICENSE_KEY}
-      - NEW_RELIC_APP_NAME=${NEW_RELIC_APP_NAME:-backend-assignment}
+      - NEW_RELIC_APP_NAME=${NEW_RELIC_APP_NAME}
       - REDIS_URL=${REDIS_URL}
     depends_on:
       - postgres

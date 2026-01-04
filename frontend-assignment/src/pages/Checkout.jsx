@@ -47,7 +47,6 @@ const Checkout = () => {
                 navigate('/');
             }, 3000);
         } catch (error) {
-            // Error handled by interceptor, but custom message derived from response if available
             if (error.response && error.response.data && error.response.data.error) {
                 toast.error(error.response.data.error);
             }
@@ -100,7 +99,6 @@ const Checkout = () => {
                 </button>
 
                 <div className="flex flex-col md:flex-row gap-8">
-                    {/* Product Summary */}
                     <div className="md:col-span-5">
                         <Card className="p-0 overflow-hidden w-full">
                             <div className="h-64 bg-slate-100 relative">
@@ -130,7 +128,6 @@ const Checkout = () => {
                         </Card>
                     </div>
 
-                    {/* Checkout Form */}
                     <div className="md:col-span-5 w-full">
                         <Card>
                             <div className="flex items-center gap-3 mb-6 border-b border-slate-100 pb-4 ">

@@ -1,6 +1,3 @@
-// MUST BE FIRST
-// require('newrelic');
-
 const express = require('express');
 const helmet = require('helmet');
 const cors = require('cors');
@@ -9,26 +6,22 @@ const hpp = require('hpp');
 const { connectDB } = require('./config/db');
 const logger = require('./utils/logger');
 
-// We will create these in Phase 3, but importing them now to avoid errors later
-// (Comment them out if you try to run before Phase 3)
 const authRoutes = require('./routes/auth');
 const productRoutes = require('./routes/products');
 
 const app = express();
 
-// --- SECURITY MIDDLEWARE ---
-app.use(helmet()); // Secure Headers
+app.use(helmet());
 app.use(cors({
     origin: 'https://anything-backend-role.onrender.com',
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization'],
     preflightContinue: false,
     optionsSuccessStatus: 200,
-}));   // Allow Frontend access
-app.use(express.json({ limit: '10kb' })); // Body parser limited to 10kb
-app.use(hpp());    // Prevent parameter pollution
+}));
+app.use(express.json({ limit: '10kb' }));
+app.use(hpp());
 
-// Rate Limiting: 100 requests per 15 mins
 const limiter = rateLimit({
     windowMs: 15 * 60 * 1000,
     max: 100,
@@ -36,7 +29,6 @@ const limiter = rateLimit({
 });
 app.use('/api', limiter);
 
-// --- ROUTES (Placeholder for now) ---
 app.get('/', (req, res) => {
     res.send('Welcome to the Anything.ai API!');
 });
@@ -44,13 +36,11 @@ app.get('/', (req, res) => {
 app.use('/api/auth', authRoutes);
 app.use('/api/products', productRoutes);
 
-// --- ERROR HANDLER ---
 app.use((err, req, res, next) => {
     logger.error(err.message);
     res.status(500).json({ success: false, error: 'Server Error' });
 });
 
-// --- SERVER START ---
 const PORT = process.env.PORT || 5000;
 
 connectDB().then(() => {

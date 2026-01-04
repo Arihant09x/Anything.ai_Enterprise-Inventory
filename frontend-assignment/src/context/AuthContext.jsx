@@ -23,7 +23,6 @@ export const AuthProvider = ({ children }) => {
                 localStorage.removeItem('token');
                 localStorage.removeItem('user');
             }
-            // Optional: Verify token with backend
         }
         setLoading(false);
     }, []);

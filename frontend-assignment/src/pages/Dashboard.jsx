@@ -7,7 +7,7 @@ import Card from '../components/ui/Card';
 import Button from '../components/ui/Button';
 import Modal from '../components/ui/Modal';
 import Input from '../components/ui/Input';
-import { Plus, Trash2, Edit, DollarSign, Package as PackageIcon, AlertCircle } from 'lucide-react';
+import { Plus, Trash2, Edit, Package as PackageIcon } from 'lucide-react';
 import gsap from 'gsap';
 import { toast } from 'react-toastify';
 
@@ -19,7 +19,6 @@ const Dashboard = () => {
     const [loading, setLoading] = useState(true);
     const [editingProduct, setEditingProduct] = useState(null);
 
-    // New Product Form State
     const [newProduct, setNewProduct] = useState({
         name: '',
         price: '',
@@ -34,7 +33,7 @@ const Dashboard = () => {
         try {
             const response = await api.get('/products');
             setProducts(response.data.data);
-            // Animate items in
+
             if (gridRef.current) {
                 gsap.fromTo(gridRef.current.children,
                     { opacity: 0, y: 20 },
@@ -67,10 +66,7 @@ const Dashboard = () => {
         e.preventDefault();
         try {
             if (editingProduct) {
-                console.log(editingProduct.id);
                 const response = await api.put(`/products/${editingProduct.id}`, newProduct);
-                console.log(newProduct);
-
                 toast.success("Product updated successfully");
                 setProducts(products.map(p => p.id === editingProduct.id ? response.data.data : p));
             } else {
@@ -206,7 +202,6 @@ const Dashboard = () => {
                 )}
             </div>
 
-            {/* Add/Edit Product Modal */}
             <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} title={editingProduct ? "Edit Product" : "Add New Product"}>
                 <form onSubmit={handleSaveProduct}>
                     <Input

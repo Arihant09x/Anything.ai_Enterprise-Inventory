@@ -31,7 +31,7 @@ const PublicRoute = ({ children }) => {
   const { user, loading } = useAuth();
 
   if (loading) {
-    return null; // Or spinner
+    return null;
   }
 
   if (user) {
