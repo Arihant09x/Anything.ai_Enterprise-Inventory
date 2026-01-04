@@ -7,6 +7,12 @@ exports.config = {
     logging: {
         level: 'info'
     },
+    application_logging: {
+        forwarding: {
+            enabled: true,
+            max_samples_stored: 10000
+        }
+    },
     allow_all_headers: true,
     attributes: {
         exclude: [

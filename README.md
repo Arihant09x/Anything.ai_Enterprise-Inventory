@@ -2,9 +2,7 @@
 
 A full-stack Inventory Management Application featuring a modern, responsive frontend and a robust, secure backend. Designed for seamless product management and user purchasing flows.
 
-[![Live Demo](https://img.shields.io/badge/demo-online-green.svg)](YOUR_LIVE_LINK_HERE)
-
-![Dashboard Preview](./inventory_dashboard_mockup.png)
+[![Live Demo](https://img.shields.io/badge/demo-online-green.svg](https://anything-backend-role.onrender.com/)
 
 ## 🚀 Features
 
@@ -170,14 +168,6 @@ REDIS_URL=rediss://...
 
 ---
 
-## �📸 More Screenshots
 
-### Checkout Page
-![Checkout Page Placeholder](https://via.placeholder.com/800x400?text=Checkout+Page+Screenshot)
-
-### Mobile View
-![Mobile View Placeholder](https://via.placeholder.com/400x800?text=Mobile+Responsive+View)
-
----
 
 
