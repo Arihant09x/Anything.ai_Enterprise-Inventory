@@ -14,11 +14,11 @@ const app = express();
 
 app.use(helmet());
 app.use(cors({
-    // origin: 'https://anything-backend-role.onrender.com',
-    // methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-    // allowedHeaders: ['Content-Type', 'Authorization'],
-    // preflightContinue: false,
-    // optionsSuccessStatus: 200,
+    origin: 'https://anything-backend-role.onrender.com',
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+    preflightContinue: false,
+    optionsSuccessStatus: 200,
 }));
 app.use(express.json({ limit: '10kb' }));
 app.use(hpp());
