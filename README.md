@@ -2,7 +2,7 @@
 
 A full-stack Inventory Management Application featuring a modern, responsive frontend and a robust, secure backend. Designed for seamless product management and user purchasing flows.
 
-[![Live Demo](https://img.shields.io/badge/demo-online-green.svg](https://anything-backend-role.onrender.com/)
+[![Live Demo](https://img.shields.io/badge/demo-online-green.svg)](YOUR_LIVE_LINK_HERE)
 
 ## 🚀 Features
 
