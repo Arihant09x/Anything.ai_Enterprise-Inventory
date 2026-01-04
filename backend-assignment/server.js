@@ -18,7 +18,13 @@ const app = express();
 
 // --- SECURITY MIDDLEWARE ---
 app.use(helmet()); // Secure Headers
-app.use(cors());   // Allow Frontend access
+app.use(cors({
+    origin: 'https://anything-backend-role.onrender.com',
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+    preflightContinue: false,
+    optionsSuccessStatus: 200,
+}));   // Allow Frontend access
 app.use(express.json({ limit: '10kb' })); // Body parser limited to 10kb
 app.use(hpp());    // Prevent parameter pollution
 
